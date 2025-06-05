@@ -77,8 +77,14 @@
 </head>
 <body>
 
+<!-- NEW TITLE SLIDE -->
+<div id="slide0" class="slide active">
+  <h1>Mexican Food and Culture</h1>
+  <button class="next-btn" onclick="showSlide('slide1')">Start</button>
+</div>
+
 <!-- INFO SLIDES (5) -->
-<div id="slide1" class="slide active">
+<div id="slide1" class="slide">
   <h1>Overview</h1>
   <ul>
     <li>Mexico chosen for food, warm climate, and vibrant culture</li>
@@ -191,7 +197,7 @@
 </div>
 
 <script>
-  let slides = ['slide1', 'slide2', 'slide3', 'slide4', 'slide5', 'quiz1', 'quiz2', 'quiz3', 'results-slide'];
+  let slides = ['slide0', 'slide1', 'slide2', 'slide3', 'slide4', 'slide5', 'quiz1', 'quiz2', 'quiz3', 'results-slide'];
   let currentIndex = 0;
 
   function showSlide(id) {
@@ -212,7 +218,7 @@
 
   function restart() {
     document.querySelectorAll('input[type="radio"]').forEach(r => (r.checked = false));
-    showSlide('slide1');
+    showSlide('slide0');
   }
 </script>
 
