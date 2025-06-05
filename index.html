@@ -1,36 +1,212 @@
-# This is a basic workflow to help you get started with Actions
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mexico Travel Facts & Quiz</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f8f1e7;
+    margin: 0;
+    padding: 0 15px 50px;
+  }
+  .slide {
+    display: none;
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto 0;
+    min-height: 80vh;
+    box-sizing: border-box;
+  }
+  .slide.active {
+    display: block;
+  }
+  h1 {
+    color: #d35400;
+    margin-bottom: 0.3em;
+  }
+  ul {
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto 20px;
+    padding-left: 1.2em;
+  }
+  li {
+    margin-bottom: 0.6em;
+    line-height: 1.3em;
+  }
+  .next-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  .quiz-option {
+    margin: 15px 0;
+    font-size: 1.1em;
+    text-align: left;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  input[type="radio"] {
+    transform: scale(1.3);
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  label {
+    cursor: pointer;
+    user-select: none;
+  }
+  /* Show checkmark after correct selected */
+  input[type="radio"]:checked + label.correct::after {
+    content: " ✓";
+    color: green;
+    font-weight: bold;
+    margin-left: 8px;
+  }
+</style>
+</head>
+<body>
 
-name: CI
+<!-- INFO SLIDES (3) -->
+<div id="slide1" class="slide active">
+  <h1>Overview & Food Insecurity</h1>
+  <ul>
+    <li>Mexico chosen for its food, warm climate, and vibrant culture</li>
+    <li>Top tourist spot: beaches, ruins, cuisine</li>
+    <li>Population ~130 million; capital is Mexico City</li>
+    <li>Spanish is spoken; uses Mexican peso</li>
+    <li>30–60% experience food insecurity</li>
+    <li>Rural areas have less access to nutritious food</li>
+    <li>Traditional foodways are affected by this</li>
+  </ul>
+  <button class="next-btn" onclick="showSlide('slide2')">Next</button>
+</div>
 
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+<div id="slide2" class="slide">
+  <h1>Geography, Climate, Food & Flavours</h1>
+  <ul>
+    <li>November has ideal travel weather: warm and dry</li>
+    <li>Diverse geography: deserts, jungles, volcanoes</li>
+    <li>Food varies by region (coastal = seafood, inland = corn/beans)</li>
+    <li>Cuisine includes salsa, guacamole, tacos, mole</li>
+    <li>Tools: molcajete & metate for grinding spices</li>
+    <li>Common spices: cumin, oregano, epazote, achiote, cinnamon</li>
+  </ul>
+  <button class="next-btn" onclick="showSlide('slide3')">Next</button>
+</div>
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+<div id="slide3" class="slide">
+  <h1>Culture, Traditions & Attractions</h1>
+  <ul>
+    <li>Dishes: tacos, mole poblano, tamales, chiles en nogada, pozole</li>
+    <li>Dining habits: 3 meals/day, lunch is largest</li>
+    <li>Table manners: hands visible, finish food, tip 10–15%</li>
+    <li>Día de Muertos = food offerings (pan de muerto)</li>
+    <li>Tourist spots: Chichén Itzá, Zócalo, Cancún</li>
+    <li>Bringing it home: Mole Poblano is memorable, fusion foods like mole poutine</li>
+  </ul>
+  <button class="next-btn" onclick="showSlide('quiz1')">Next</button>
+</div>
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+<!-- QUIZ SLIDES (3) -->
+<div id="quiz1" class="slide">
+  <h1>Quiz Time!</h1>
+  <h3>1. What’s the most widely spoken language in Mexico?</h3>
+  <div class="quiz-option">
+    <input type="radio" name="q1" id="q1a" value="0" />
+    <label for="q1a">Portuguese</label>
+  </div>
+  <div class="quiz-option">
+    <input type="radio" name="q1" id="q1b" value="1" />
+    <label for="q1b" class="correct">Spanish</label>
+  </div>
+  <div class="quiz-option">
+    <input type="radio" name="q1" id="q1c" value="0" />
+    <label for="q1c">English</label>
+  </div>
+  <button class="next-btn" onclick="showSlide('quiz2')">Next</button>
+</div>
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+<div id="quiz2" class="slide">
+  <h1>Quiz Time!</h1>
+  <h3>2. Which dish is made with chili peppers and chocolate?</h3>
+  <div class="quiz-option">
+    <input type="radio" name="q2" id="q2a" value="1" />
+    <label for="q2a" class="correct">Mole Poblano</label>
+  </div>
+  <div class="quiz-option">
+    <input type="radio" name="q2" id="q2b" value="0" />
+    <label for="q2b">Tacos</label>
+  </div>
+  <div class="quiz-option">
+    <input type="radio" name="q2" id="q2c" value="0" />
+    <label for="q2c">Chiles en Nogada</label>
+  </div>
+  <button class="next-btn" onclick="showSlide('quiz3')">Next</button>
+</div>
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+<div id="quiz3" class="slide">
+  <h1>Quiz Time!</h1>
+  <h3>3. When is Día de Muertos celebrated?</h3>
+  <div class="quiz-option">
+    <input type="radio" name="q3" id="q3a" value="0" />
+    <label for="q3a">December 24th</label>
+  </div>
+  <div class="quiz-option">
+    <input type="radio" name="q3" id="q3b" value="1" />
+    <label for="q3b" class="correct">November 1st &amp; 2nd</label>
+  </div>
+  <div class="quiz-option">
+    <input type="radio" name="q3" id="q3c" value="0" />
+    <label for="q3c">July 4th</label>
+  </div>
+  <button class="next-btn" onclick="showResults()">See Results</button>
+</div>
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+<!-- RESULTS SLIDE -->
+<div id="results-slide" class="slide">
+  <h1>Your Results</h1>
+  <div id="results"></div>
+  <button class="next-btn" onclick="restart()">Restart</button>
+</div>
+
+<script>
+  let slides = ['slide1', 'slide2', 'slide3', 'quiz1', 'quiz2', 'quiz3', 'results-slide'];
+  let currentIndex = 0;
+
+  function showSlide(id) {
+    document.getElementById(slides[currentIndex]).classList.remove('active');
+    currentIndex = slides.indexOf(id);
+    document.getElementById(slides[currentIndex]).classList.add('active');
+  }
+
+  function showResults() {
+    // Sum up selected values (0 or 1)
+    let score = 0;
+    for (let i = 1; i <= 3; i++) {
+      const checked = document.querySelector(`input[name="q${i}"]:checked`);
+      if (checked) score += Number(checked.value);
+    }
+    showSlide('results-slide');
+    document.getElementById('results').textContent = `You scored ${score} / 3!`;
+  }
+
+  function restart() {
+    // Clear selections
+    document.querySelectorAll('input[type="radio"]').forEach(r => (r.checked = false));
+    showSlide('slide1');
+  }
+</script>
+
+</body>
+</html>
